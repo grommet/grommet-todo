@@ -1,6 +1,6 @@
 {
   "name": "grommet-todo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Todo application created on top of Grommet framework",
   "main": "src/js/index.js",
   "homepage": "http://grommet.io",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "gulp": "^3.9.0",
-    "grommet": "https://github.com/grommet/grommet/tarball/next",
+    "grommet": "^0.4.0",
     "body-parser": "^1.10.0",
     "compression": "^1.4.4",
     "express": "^4.10.6",
