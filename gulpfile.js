@@ -1,6 +1,9 @@
 var gulp = require('gulp');
 var path = require('path');
 var devGulpTasks = require('grommet/utils/gulp/gulp-tasks');
+var git = require('gulp-git');
+var del = require('del');
+var mkdirp = require('mkdirp');
 
 var opts = {
   base: '.',
@@ -25,12 +28,77 @@ var opts = {
       ]
     }
   },
-  devServerPort: 9000,
-  sync: {
-    hostname: 'grommet.io',
-    username: 'grommet',
-    remoteDestination: '/var/www/html/examples/grommet-todo/dist'
-  }
+  devServerPort: 9000
 };
+
+gulp.task('release:createTmp', function(done) {
+  del.sync(['./tmp']);
+  mkdirp('./tmp', function(err) {
+    if (err) {
+      throw err;
+    }
+    done();
+  });
+});
+
+gulp.task('release:heroku', ['dist', 'release:createTmp'], function(done) {
+  if (process.env.CI) {
+    git.clone('https://' + process.env.GH_TOKEN + '@github.com/grommet/grommet-todo.git',
+      {
+        cwd: './tmp/'
+      },
+      function(err) {
+        if (err) {
+          throw err;
+        }
+
+        process.chdir('./tmp/grommet-todo');
+        git.checkout('heroku', function(err) {
+          if (err) {
+            throw err;
+          }
+
+          gulp.src([
+            '../../**',
+            '!../../.gitignore',
+            '!../../.travis.yml'])
+          .pipe(gulp.dest('./')).on('end', function() {
+            git.status({
+              args: '--porcelain'
+            }, function(err, stdout) {
+              if (err) {
+                throw err;
+              }
+
+              if (stdout && stdout !== '') {
+                gulp.src('./')
+                  .pipe(git.add({
+                    args: '--all'
+                  }))
+                  .pipe(git.commit('Heroku dev version update.')).on('end', function() {
+                    git.push('origin', 'heroku', { quiet: true }, function(err) {
+                      if (err) {
+                        throw err;
+                      }
+
+                      process.chdir(__dirname);
+                      done();
+                    });
+                  });
+              } else {
+                console.log('No difference since last commit, skipping heroku release.');
+
+                process.chdir(__dirname);
+                done();
+              }
+            });
+          });
+        });
+      }
+    );
+  } else {
+    console.warn('Skipping release. Release:heroku task should be executed by CI only.');
+  }
+});
 
 devGulpTasks(gulp, opts);

@@ -10,7 +10,7 @@ var Table = require('grommet/components/Table');
 var Button = require('grommet/components/Button');
 var Status = require('grommet/components/icons/Status');
 var TodoAddTaskForm = require('./TodoAddTaskForm');
-var CloseIcon = require('grommet/components/icons/Clear');
+var CloseIcon = require('grommet/components/icons/base/Close');
 
 function getLabel(label, count, colorIndex) {
   return {
@@ -66,9 +66,10 @@ var TodoAppDashboard = React.createClass({
           <td width="10%"><Status value={task.status} small={true} /></td>
           <td>{task.item}</td>
           <td width="10%">
-            <CloseIcon onClick={this._onRequestForDelete.bind(this, index)}
-              a11yTitleId={'delete-icon-' + index}
-              a11yTitle={"Delete " + task.item + " task"} />
+            <Button type="icon" onClick={this._onRequestForDelete.bind(this, index)}>
+              <CloseIcon a11yTitleId={'delete-icon-' + index}
+                a11yTitle={"Delete " + task.item + " task"} />
+            </Button>
           </td>
         </tr>
       );

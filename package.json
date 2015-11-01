@@ -1,6 +1,6 @@
 {
-  "name": "todo-app-modular",
-  "version": "0.3.0",
+  "name": "grommet-todo",
+  "version": "0.1.0",
   "description": "Todo application created on top of Grommet framework",
   "main": "src/js/index.js",
   "homepage": "http://grommet.io",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "gulp": "^3.9.0",
-    "grommet": "https://github.com/grommet/grommet/tarball/stable",
+    "grommet": "https://github.com/grommet/grommet/tarball/next",
     "body-parser": "^1.10.0",
     "compression": "^1.4.4",
     "express": "^4.10.6",
@@ -24,5 +24,14 @@
   "engines": {
     "node": ">= 0.10",
     "npm": ">= 1.4"
+  },
+  "scripts": {
+    "build": "gulp dist",
+    "start": "node server/server.js"
+  },
+  "devDependencies": {
+    "del": "^2.0.2",
+    "gulp-git": "^1.6.0",
+    "mkdirp": "^0.5.1"
   }
 }
