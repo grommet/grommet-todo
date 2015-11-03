@@ -1,7 +1,7 @@
 # Grommet Example App: grommet-todo
 
 ## Demo
-[Live demo](http://grommet.io/todo-app-modular) is the obligitory ToDo application based on Grommet
+[Live demo](http://todo.grommet.io/) is the obligitory ToDo application based on Grommet
 
 ## How To
 This app demonstrates the todo application by using [Modular Grommet](http://grommet.io/docs/documentation/modular-grommet).
