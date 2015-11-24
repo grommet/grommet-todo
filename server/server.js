@@ -26,7 +26,7 @@ var server = express();
 var TodoApp = React.createFactory(webpackRequire('../src/js/TodoApp'));
 
 var theme = sass.renderSync({
-  file: 'node_modules/grommet/scss/vanilla/index',
+  file: 'node_modules/grommet/scss/vanilla/index.scss',
   includePaths: [path.resolve(__dirname, '../node_modules')]
 });
 
