@@ -1,3 +1,4 @@
+var argv = require('yargs').argv;
 var gulp = require('gulp');
 var path = require('path');
 var devGulpTasks = require('grommet/utils/gulp/gulp-tasks');
@@ -28,8 +29,20 @@ var opts = {
       ]
     }
   },
-  devServerPort: 9000
+  devServerPort: 9000,
+  alias: {
+    'grommet/scss': path.resolve(__dirname, '../grommet/src/scss'),
+    'grommet': path.resolve(__dirname, '../grommet/src/js')
+  },
+  devPreprocess: ['set-webpack-alias']
 };
+
+gulp.task('set-webpack-alias', function () {
+  if (opts.alias && argv.useAlias) {
+    console.log('Using local alias for development.');
+    opts.webpack.resolve.alias = opts.alias;
+  }
+});
 
 gulp.task('release:createTmp', function(done) {
   del.sync(['./tmp']);
