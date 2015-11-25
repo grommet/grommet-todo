@@ -1,7 +1,7 @@
 # Grommet Example App: grommet-todo
 
 ## Demo
-[Live demo](http://todo.grommet.io/) is the obligitory ToDo application based on Grommet
+[Live demo](http://todo.grommet.io/) is the obligatory ToDo application based on Grommet
 
 ## How To
 This app demonstrates the todo application by using [Modular Grommet](http://grommet.io/docs/documentation/modular-grommet).
@@ -30,5 +30,5 @@ To run this application, execute the following commands:
   4. Start the back-end server with Isomorphic React
 
     ```
-    $ node ssr/server.js
+    $ node server/server.js
     ```
