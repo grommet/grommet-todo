@@ -16,7 +16,7 @@ var TodoApp = React.createClass({
           <Title>Todo App</Title>
         </Header>
         <TodoAppDashboard />
-        <Footer appCentered={true} direction="column"
+        <Footer primary={true} appCentered={true} direction="column"
           align="center" pad="small" colorIndex="grey-1">
           <p>Build your ideas with <a href="http://grommet.io" target="_blank">Grommet</a>!</p>
         </Footer>
