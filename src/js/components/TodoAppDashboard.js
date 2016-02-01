@@ -1,63 +1,69 @@
 // (C) Copyright 2014-2015 Hewlett-Packard Development Company, L.P.
 
-var React = require('react');
-var Section = require('grommet/components/Section');
-var Header = require('grommet/components/Header');
-var Tiles = require('grommet/components/Tiles');
-var Tile = require('grommet/components/Tile');
-var Meter = require('grommet/components/Meter');
-var Table = require('grommet/components/Table');
-var Button = require('grommet/components/Button');
-var Status = require('grommet/components/icons/Status');
-var TodoAddTaskForm = require('./TodoAddTaskForm');
-var CloseIcon = require('grommet/components/icons/base/Close');
+import React, { Component } from 'react';
 
-function getLabel(label, count, colorIndex) {
-  return {
-    "label": label,
-    "value": count,
-    "colorIndex": colorIndex
-  };
+import Button from 'grommet/components/Button';
+import Header from 'grommet/components/Header';
+import Meter from 'grommet/components/Meter';
+import Section from 'grommet/components/Section';
+import Table from 'grommet/components/Table';
+import Tile from 'grommet/components/Tile';
+import Tiles from 'grommet/components/Tiles';
+
+import Status from 'grommet/components/icons/Status';
+import CloseIcon from 'grommet/components/icons/base/Close';
+
+import TodoAddTaskForm from './TodoAddTaskForm';
+
+function getLabel(label, value, colorIndex) {
+  return { label, value, colorIndex };
 }
 
-var TodoAppDashboard = React.createClass({
+export default class TodoAppDashboard extends Component {
 
-  getInitialState: function () {
-    return {
+  constructor () {
+    super();
+
+    this._onRequestForAdd = this._onRequestForAdd.bind(this);
+    this._onRequestForAddClose = this._onRequestForAddClose.bind(this);
+    this._onRequestForDelete = this._onRequestForDelete.bind(this);
+    this._onAddTask = this._onAddTask.bind(this);
+
+    this.state = {
       tasks: [],
       addTask: false
     };
-  },
+  }
 
-  _onRequestForAdd: function () {
+  _onRequestForAdd () {
     this.setState({addTask: true});
-  },
+  }
 
-  _onRequestForAddClose: function () {
+  _onRequestForAddClose () {
     this.setState({addTask: false});
-  },
+  }
 
-  _onRequestForDelete: function (index) {
-    var tasks = this.state.tasks;
+  _onRequestForDelete (index) {
+    let tasks = this.state.tasks;
     tasks.splice(index, 1);
     this.setState({tasks: tasks});
-  },
+  }
 
-  _onAddTask: function (task) {
-    var tasks = this.state.tasks;
+  _onAddTask (task) {
+    let tasks = this.state.tasks;
     tasks.push(task);
     this.setState({tasks: tasks, addTask: false});
-  },
+  }
 
-  render: function () {
+  render () {
 
-    var tasksMap = {
+    let tasksMap = {
       error: 0,
       ok: 0,
       warning: 0
     };
 
-    var tasks = this.state.tasks.map(function(task, index) {
+    let tasks = this.state.tasks.map(function(task, index) {
 
       tasksMap[task.status] += 1;
 
@@ -66,7 +72,8 @@ var TodoAppDashboard = React.createClass({
           <td width="10%"><Status value={task.status} small={true} /></td>
           <td>{task.item}</td>
           <td width="10%">
-            <Button type="icon" onClick={this._onRequestForDelete.bind(this, index)}>
+            <Button type="icon"
+              onClick={this._onRequestForDelete.bind(this, index)}>
               <CloseIcon a11yTitleId={'delete-icon-' + index}
                 a11yTitle={"Delete " + task.item + " task"} />
             </Button>
@@ -75,7 +82,7 @@ var TodoAppDashboard = React.createClass({
       );
     }, this);
 
-    var addTask = null;
+    let addTask = null;
     if (this.state.addTask) {
       addTask = (
         <TodoAddTaskForm onClose={this._onRequestForAddClose}
@@ -108,6 +115,4 @@ var TodoAppDashboard = React.createClass({
       </Section>
     );
   }
-});
-
-module.exports = TodoAppDashboard;
+}

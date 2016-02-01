@@ -1,27 +1,31 @@
 // (C) Copyright 2014-2015 Hewlett-Packard Development Company, L.P.
 
-var React = require('react');
-var Layer = require('grommet/components/Layer');
-var Form = require('grommet/components/Form');
-var FormFields = require('grommet/components/FormFields');
-var FormField = require('grommet/components/FormField');
-var Footer = require('grommet/components/Footer');
-var Menu = require('grommet/components/Menu');
-var Button = require('grommet/components/Button');
-var Box = require('grommet/components/Box');
+import React, { Component } from 'react';
 
-var defaultState = {
-  item: undefined,
-  status: undefined
-};
+import Box from 'grommet/components/Box';
+import Button from 'grommet/components/Button';
+import Form from 'grommet/components/Form';
+import FormField from 'grommet/components/FormField';
+import FormFields from 'grommet/components/FormFields';
+import Footer from 'grommet/components/Footer';
+import Layer from 'grommet/components/Layer';
+import Menu from 'grommet/components/Menu';
 
-var TodoAddTaskForm = React.createClass({
+export default class TodoAddTaskForm extends Component {
+  constructor () {
+    super();
 
-  getInitialState: function () {
-    return defaultState;
-  },
+    this._onSubmit = this._onSubmit.bind(this);
+    this._onItemChange = this._onItemChange.bind(this);
+    this._onStatusChange = this._onStatusChange.bind(this);
 
-  _onSubmit: function (event) {
+    this.state = {
+      item: undefined,
+      status: undefined
+    };
+  }
+
+  _onSubmit (event) {
     event.preventDefault();
     if (this.state.item) {
       this.props.onSubmit({
@@ -29,19 +33,19 @@ var TodoAddTaskForm = React.createClass({
         status: this.state.status || 'ok'
       });
     }
-  },
+  }
 
-  _onItemChange: function (event) {
+  _onItemChange (event) {
     this.setState({item: event.target.value});
-  },
+  }
 
-  _onStatusChange: function (event) {
+  _onStatusChange (event) {
     this.setState({status: event.target.value});
-  },
+  }
 
-  render: function() {
+  render () {
     return (
-      <Layer onClose={this.props.onClose} closer={true}
+      <Layer onClose={this.props.onClose} closer={true} align="right"
         a11yCloserTitle={'Close the Add Task Form'}>
         <Form onSubmit={this._onSubmit}>
           <header><h1>Add Task</h1></header>
@@ -77,6 +81,4 @@ var TodoAddTaskForm = React.createClass({
       </Layer>
     );
   }
-});
-
-module.exports = TodoAddTaskForm;
+}
