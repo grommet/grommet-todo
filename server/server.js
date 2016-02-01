@@ -9,13 +9,14 @@ var path = require('path');
 var sass = require('node-sass');
 
 var React = require('react');
+var ReactDOMServer = require('react-dom/server');
 
 var webpackRequire = require('enhanced-require')(module, {
   resolve: {
     loaders: [
       {
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'babel?presets[]=react,presets[]=es2015',
         exclude: /(node_modules\/intl|node_modules\/moment|node_modules\/react)/
       }
     ]
@@ -45,7 +46,7 @@ app.use(bodyParser.json());
 app.get('/', function (req, res) {
 
   // server side rendering with react + webpack
-  var todoAppHtml = React.renderToString(TodoApp({}));
+  var todoAppHtml = ReactDOMServer.renderToString(TodoApp({}));
   res.render('index.ejs', {appBody: todoAppHtml, styleContent: '<style>' + theme.css + '</style>'});
 
   //for single page app uncomment following line (remember to comment the 2 lines above)
