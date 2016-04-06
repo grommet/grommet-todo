@@ -1,52 +1,26 @@
-var argv = require('yargs').argv;
-var gulp = require('gulp');
-var path = require('path');
-var devGulpTasks = require('grommet/utils/gulp/gulp-tasks');
-var git = require('gulp-git');
-var del = require('del');
-var mkdirp = require('mkdirp');
+// (C) Copyright 2014-2015 Hewlett-Packard Development Company, L.P.
 
-var opts = {
-  base: '.',
-  dist: path.resolve(__dirname, 'dist/'),
-  copyAssets: [
-    'src/index.html',
-    {
-      asset: 'src/img/**',
-      dist: 'dist/img/'
-    }
-  ],
-  scssAssets: ['src/scss/**/*.scss'],
-  jsAssets: ['src/js/**/*.js'],
-  mainJs: 'src/js/index.js',
-  mainScss: 'src/scss/index.scss',
-  webpack: {
-    resolve: {
-      root: [
-        path.resolve(__dirname, 'src/js'),
-        path.resolve(__dirname, 'src/scss'),
-        path.resolve(__dirname, 'node_modules')
-      ]
-    }
-  },
-  devServerPort: 9000,
-  alias: {
-    'grommet/scss': path.resolve(__dirname, '../grommet/src/scss'),
-    'grommet': path.resolve(__dirname, '../grommet/src/js')
-  },
-  devPreprocess: ['set-webpack-alias']
-};
+import yargs from 'yargs'
+const argv = yargs.argv;
+import gulp from 'gulp';
+import path from 'path';
+import grommetToolbox, {getOptions} from 'grommet-toolbox';
+import git from 'gulp-git';
+import del from 'del';
+import mkdirp from 'mkdirp';
 
-gulp.task('set-webpack-alias', function () {
+const opts = getOptions();
+
+gulp.task('set-webpack-alias', () => {
   if (opts.alias && argv.useAlias) {
     console.log('Using local alias for development.');
     opts.webpack.resolve.alias = opts.alias;
   }
 });
 
-gulp.task('release:createTmp', function(done) {
+gulp.task('release:createTmp', (done) => {
   del.sync(['./tmp']);
-  mkdirp('./tmp', function(err) {
+  mkdirp('./tmp', (err) => {
     if (err) {
       throw err;
     }
@@ -54,19 +28,19 @@ gulp.task('release:createTmp', function(done) {
   });
 });
 
-gulp.task('release:heroku', ['dist', 'release:createTmp'], function(done) {
+gulp.task('release:heroku', ['dist', 'release:createTmp'], (done) => {
   if (process.env.CI) {
     git.clone('https://' + process.env.GH_TOKEN + '@github.com/grommet/grommet-todo.git',
       {
         cwd: './tmp/'
       },
-      function(err) {
+      (err) => {
         if (err) {
           throw err;
         }
 
         process.chdir('./tmp/grommet-todo');
-        git.checkout('heroku', function(err) {
+        git.checkout('heroku', (err) => {
           if (err) {
             throw err;
           }
@@ -75,10 +49,10 @@ gulp.task('release:heroku', ['dist', 'release:createTmp'], function(done) {
             '../../**',
             '!../../.gitignore',
             '!../../.travis.yml'])
-          .pipe(gulp.dest('./')).on('end', function() {
+          .pipe(gulp.dest('./')).on('end', () => {
             git.status({
               args: '--porcelain'
-            }, function(err, stdout) {
+            }, (err, stdout) => {
               if (err) {
                 throw err;
               }
@@ -88,8 +62,8 @@ gulp.task('release:heroku', ['dist', 'release:createTmp'], function(done) {
                   .pipe(git.add({
                     args: '--all'
                   }))
-                  .pipe(git.commit('Heroku dev version update.')).on('end', function() {
-                    git.push('origin', 'heroku', { quiet: true }, function(err) {
+                  .pipe(git.commit('Heroku dev version update.')).on('end', () => {
+                    git.push('origin', 'heroku', { quiet: true }, (err) => {
                       if (err) {
                         throw err;
                       }
@@ -114,4 +88,4 @@ gulp.task('release:heroku', ['dist', 'release:createTmp'], function(done) {
   }
 });
 
-devGulpTasks(gulp, opts);
+grommetToolbox(gulp);

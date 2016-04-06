@@ -68,15 +68,14 @@ export default class TodoAppDashboard extends Component {
       tasksMap[task.status] += 1;
 
       return (
-        <tr id={index} key={"task_" + index}>
+        <tr id={index} key={`task_${index}`}>
           <td width="10%"><Status value={task.status} small={true} /></td>
           <td>{task.item}</td>
           <td width="10%">
-            <Button type="icon"
-              onClick={this._onRequestForDelete.bind(this, index)}>
-              <CloseIcon a11yTitleId={'delete-icon-' + index}
-                a11yTitle={"Delete " + task.item + " task"} />
-            </Button>
+            <Button plain={true}
+              onClick={this._onRequestForDelete.bind(this, index)}
+              icon={<CloseIcon />}
+              a11yTitle={`Delete ${task.item} task`} />
           </td>
         </tr>
       );
