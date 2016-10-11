@@ -1,0 +1,219 @@
+exports[`TodoAppDashboard has correct default options 1`] = `
+<section
+  className="grommetux-box grommetux-box--direction-column grommetux-box--responsive grommetux-box--flex grommetux-box--pad-vertical-medium grommetux-section"
+  id={undefined}
+  onClick={undefined}
+  role={undefined}
+  style={Object {}}
+  tabIndex={undefined}>
+  <a
+    aria-hidden="true"
+    className="grommetux-skip-link-anchor"
+    id="skip-link-main_content"
+    tabIndex="-1">
+    Main Content
+  </a>
+  <div
+    className="grommetux-box grommetux-box--direction-row grommetux-box--responsive grommetux-box--pad-none"
+    id={undefined}
+    onClick={undefined}
+    role={undefined}
+    style={Object {}}
+    tabIndex={undefined}>
+    <div
+      className="grommetux-box grommetux-box--direction-column grommetux-box--align-center grommetux-box--responsive grommetux-box--basis-1-3 grommetux-box--pad-none"
+      id={undefined}
+      onClick={undefined}
+      role={undefined}
+      style={Object {}}
+      tabIndex={undefined}>
+      <div
+        className="grommetux-meter grommetux-meter--circle grommetux-meter--count-3">
+        <div
+          className="grommetux-meter__value-container">
+          <div
+            className="grommetux-meter__graphic-container">
+            <svg
+              aria-label="Circle Meter. , Value: 0, Max: 100"
+              className="grommetux-meter__graphic"
+              height={192}
+              onBlur={[Function bound _onGraphicBlur]}
+              onFocus={[Function bound _onGraphicFocus]}
+              preserveAspectRatio="xMidYMid meet"
+              role="group"
+              tabIndex="0"
+              viewBox="0 0 192 192"
+              width={192}>
+              <g
+                className="grommetux-meter__tracks">
+                <g>
+                  <path
+                    className="grommetux-meter__slice"
+                    d="M 96.01466076564235 179.99999872060684 A 84 84 0 1 0 96 180"
+                    data-index={0}
+                    onBlur={[Function bound bound _onActivate]}
+                    onFocus={[Function bound bound _onActivate]} />
+                  <path
+                    className="grommetux-meter__hot"
+                    d="M 96.01466076564235 179.99999872060684 A 84 84 0 1 0 96 180"
+                    fill="none"
+                    onClick={undefined}
+                    onMouseOut={[Function bound bound _onActivate]}
+                    onMouseOver={[Function bound bound _onActivate]} />
+                </g>
+                <g>
+                  <path
+                    className="grommetux-meter__slice"
+                    d="M 96.01047197545881 155.99999908614774 A 60 60 0 1 0 96 156"
+                    data-index={1}
+                    onBlur={[Function bound bound _onActivate]}
+                    onFocus={[Function bound bound _onActivate]} />
+                  <path
+                    className="grommetux-meter__hot"
+                    d="M 96.01047197545881 155.99999908614774 A 60 60 0 1 0 96 156"
+                    fill="none"
+                    onClick={undefined}
+                    onMouseOut={[Function bound bound _onActivate]}
+                    onMouseOver={[Function bound bound _onActivate]} />
+                </g>
+                <g>
+                  <path
+                    className="grommetux-meter__slice"
+                    d="M 96.0062831852753 131.99999945168864 A 36 36 0 1 0 96 132"
+                    data-index={2}
+                    onBlur={[Function bound bound _onActivate]}
+                    onFocus={[Function bound bound _onActivate]} />
+                  <path
+                    className="grommetux-meter__hot"
+                    d="M 96.0062831852753 131.99999945168864 A 36 36 0 1 0 96 132"
+                    fill="none"
+                    onClick={undefined}
+                    onMouseOut={[Function bound bound _onActivate]}
+                    onMouseOver={[Function bound bound _onActivate]} />
+                </g>
+              </g>
+              <g
+                className="grommetux-meter__values">
+                <g
+                  aria-label="0"
+                  role="img">
+                  <path
+                    className="grommetux-meter__slice grommetux-color-index-critical"
+                    d="M 96 180 A 84 84 0 0 0 96 180"
+                    data-index={0}
+                    onBlur={[Function bound bound _onActivate]}
+                    onFocus={[Function bound bound _onActivate]} />
+                  <path
+                    className="grommetux-meter__hot"
+                    d="M 96 180 A 84 84 0 0 0 96 180"
+                    fill="none"
+                    onClick={undefined}
+                    onMouseOut={[Function bound bound _onActivate]}
+                    onMouseOver={[Function bound bound _onActivate]} />
+                </g>
+                <g
+                  aria-label="0"
+                  role="img">
+                  <path
+                    className="grommetux-meter__slice grommetux-color-index-warning"
+                    d="M 96 156 A 60 60 0 0 0 96 156"
+                    data-index={1}
+                    onBlur={[Function bound bound _onActivate]}
+                    onFocus={[Function bound bound _onActivate]} />
+                  <path
+                    className="grommetux-meter__hot"
+                    d="M 96 156 A 60 60 0 0 0 96 156"
+                    fill="none"
+                    onClick={undefined}
+                    onMouseOut={[Function bound bound _onActivate]}
+                    onMouseOver={[Function bound bound _onActivate]} />
+                </g>
+                <g
+                  aria-label="0"
+                  role="img">
+                  <path
+                    className="grommetux-meter__slice grommetux-color-index-ok"
+                    d="M 96 132 A 36 36 0 0 0 96 132"
+                    data-index={2}
+                    onBlur={[Function bound bound _onActivate]}
+                    onFocus={[Function bound bound _onActivate]} />
+                  <path
+                    className="grommetux-meter__hot"
+                    d="M 96 132 A 36 36 0 0 0 96 132"
+                    fill="none"
+                    onClick={undefined}
+                    onMouseOut={[Function bound bound _onActivate]}
+                    onMouseOver={[Function bound bound _onActivate]} />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        className="grommetux-box grommetux-box--direction-row grommetux-box--justify-between grommetux-box--align-center grommetux-box--pad-none"
+        id={undefined}
+        onClick={undefined}
+        role={undefined}
+        style={Object {}}
+        tabIndex={undefined}>
+        <div
+          className="grommetux-value grommetux-value--align-center">
+          <div
+            className="grommetux-value__annotated">
+            <span
+              className="grommetux-value__value">
+              0
+            </span>
+            <span
+              className="grommetux-value__units">
+              Tasks
+            </span>
+          </div>
+          <span
+            className="grommetux-value__label">
+            Total
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="grommetux-box grommetux-box--direction-column grommetux-box--responsive grommetux-box--basis-2-3 grommetux-box--pad-medium"
+      id={undefined}
+      onClick={undefined}
+      role={undefined}
+      style={Object {}}
+      tabIndex={undefined}>
+      <h3
+        className="grommetux-heading">
+        My Tasks
+      </h3>
+      <ul
+        className="grommetux-list"
+        role="list" />
+      <div
+        className="grommetux-box grommetux-box--direction-column grommetux-box--align-start grommetux-box--responsive grommetux-box--pad-vertical-large"
+        id={undefined}
+        onClick={undefined}
+        role={undefined}
+        style={Object {}}
+        tabIndex={undefined}>
+        <button
+          aria-label={undefined}
+          className="grommetux-button grommetux-button--primary"
+          disabled={false}
+          href={undefined}
+          id={undefined}
+          onBlur={[Function onBlur]}
+          onClick={[Function bound _onRequestForAdd]}
+          onFocus={[Function onFocus]}
+          onMouseDown={[Function onMouseDown]}
+          onMouseUp={[Function onMouseUp]}
+          type="button">
+          Add Task
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+`;

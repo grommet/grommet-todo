@@ -61,7 +61,7 @@ export default class TodoAddTaskForm extends Component {
                     onChange={this._onStatusChange}>
                     <option value="ok">Done</option>
                     <option value="warning">Due Soon</option>
-                    <option value="error">Past Due</option>
+                    <option value="critical">Past Due</option>
                   </select>
                 </FormField>
               </fieldset>
