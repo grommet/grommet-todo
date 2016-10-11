@@ -29,5 +29,5 @@ export default {
     'grommet': path.resolve(__dirname, '../grommet/src/js')
   },
   devPreprocess: ['set-webpack-alias'],
-  testPaths: ['test/**/*-test.js']
+  testPaths: ['__tests__']
 };
